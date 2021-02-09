@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+<Properties>
+    <Property name="filename">export/home/apps/logs</Property>
+</Properties>
+<Appenders>
+    <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+    </Console>
+    <File name="MyFile"
+        fileName="${filename}/app.log"
+        immediateFlush="true">
+        <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+    </File>
+</Appenders>
+
+<Loggers>
+    <Logger name="guru.springframework.blog.log4j2properties" level="debug">
+        <AppenderRef ref="LOGFILE"
+            level="debug" />
+    </Logger>
+    <Root level="debug">
+        <AppenderRef ref="STDOUT"/>
+        <AppenderRef ref="Console" level="info" />
+        <AppenderRef ref="MyFile" level="info"/>
+    </Root>
+</Loggers>
+</Configuration>
